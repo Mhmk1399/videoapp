@@ -24,3 +24,355 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.timeline-container {
+  width: 100%;
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.timeline-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.timeline-controls button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.timeline-controls button:hover {
+  background-color: #555;
+}
+
+.timeline-ruler {
+  display: flex;
+  height: 20px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #555;
+}
+
+.ruler-mark {
+  flex: 1;
+  position: relative;
+  text-align: center;
+}
+
+.ruler-mark::before {
+  content: '';
+  position: absolute;
+  height: 5px;
+  width: 1px;
+  background-color: #555;
+  bottom: 0;
+  left: 50%;
+}
+
+.ruler-mark span {
+  font-size: 10px;
+  color: #aaa;
+}
+
+.timeline {
+  display: flex;
+  height: 80px;
+  background-color: #333;
+  border-radius: 3px;
+  position: relative;
+  min-width: 100%;
+  transition: transform 0.3s ease;
+  transform-origin: left;
+}
+
+.video-segment {
+  position: relative;
+  height: 100%;
+  background-color: #4a6baf;
+  margin-right: 2px;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: move;
+  transition: opacity 0.2s;
+}
+
+.video-segment:hover {
+  background-color: #5a7bbf;
+}
+
+.video-segment.dragging {
+  opacity: 0.5;
+}
+
+.segment-thumbnail {
+  height: 60%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.segment-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.segment-info {
+  height: 40%;
+  padding: 2px 5px;
+  font-size: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.edit-controls {
+  width: 100%;
+  padding: 15px;
+  background-color: #2a2a2a;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.main-controls {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.control-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.control-button:hover {
+  transform: translateY(-2px);
+}
+
+.control-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.play-button {
+  background-color: #4caf50;
+  color: white;
+}
+
+.play-button:hover {
+  background-color: #45a049;
+}
+
+.cut-button {
+  background-color: #ff9800;
+  color: white;
+}
+
+.cut-button:hover {
+  background-color: #e68a00;
+}
+
+.trim-button {
+  background-color: #2196f3;
+  color: white;
+}
+
+.trim-button:hover {
+  background-color: #0b7dda;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #d32f2f;
+}
+
+.export-button {
+  background-color: #9c27b0;
+  color: white;
+}
+
+.export-button:hover {
+  background-color: #7b1fa2;
+}
+
+.trim-controls {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #333;
+  border-radius: 4px;
+}
+
+.trim-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.trim-slider-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.trim-slider-container label {
+  margin-bottom: 5px;
+  color: #ddd;
+}
+
+.trim-slider {
+  width: 100%;
+  height: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #555;
+  border-radius: 5px;
+  outline: none;
+}
+
+.trim-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #2196f3;
+  cursor: pointer;
+}
+
+.trim-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #2196f3;
+  cursor: pointer;
+}
+
+.trim-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.trim-apply, .trim-cancel {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.trim-apply {
+  background-color: #2196f3;
+  color: white;
+}
+
+.trim-cancel {
+  background-color: #555;
+  color: white;
+}
+
+.time-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  color: #aaa;
+  font-size: 14px;
+}
+.video-editor {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #1e1e1e;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.editor-main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.preview-area {
+  width: 100%;
+  height: 400px;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.preview-area video {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.empty-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #666;
+}
+
+.upload-area {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.upload-area input[type="file"] {
+  display: none;
+}
+
+.upload-button {
+  padding: 12px 24px;
+  background-color: #3f51b5;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+  background-color: #303f9f;
+}
+
+@media (max-width: 768px) {
+  .preview-area {
+    height: 300px;
+  }
+  
+  .main-controls {
+    flex-direction: column;
+  }
+  
+  .control-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
